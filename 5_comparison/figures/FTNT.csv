@@ -1,0 +1,35 @@
+key,label,value,unit,calc,sources
+close,Close on 2026-10-23,179.99,USD,last bar of the daily price copy: 179.99,D:1310
+vs_ema50,Close against its 50-day EMA,0.046584,%,EMA of all 1309 closes since 2021-08-09 (weight 2/51) = 171.98; 179.99 / 171.98 - 1 = +4.7%,D:2-1310
+vs_ema200,Close against its 200-day EMA,0.301025,%,EMA of all 1309 closes since 2021-08-09 (weight 2/201) = 138.34; 179.99 / 138.34 - 1 = +30.1%,D:2-1310
+hi52,52-week high (2026-10-13),197.13,USD,highest intraday high since 2025-10-23: 197.13 on 2026-10-13,D:1302
+off_hi,Close against the 52-week high,-0.0869477,%,179.99 / 197.13 - 1 = -8.7%,P:hi52 D:1310
+ret_1m,Change over 21 sessions,0.00738792,%,179.99 / 178.67 (2026-09-24) - 1 = +0.7%,D:1289 D:1310
+ret_3m,Change over 63 sessions,0.181192,%,179.99 / 152.38 (2026-07-27) - 1 = +18.1%,D:1247 D:1310
+eps_beats,"EPS above consensus, last 4 reports",4,count,2025-11-05: 0.74 against 0.63 (+16.9%); 2026-02-05: 0.81 against 0.74 (+8.9%); 2026-05-06: 0.82 against 0.62 (+32.6%); 2026-07-29: 0.9 against 0.75 (+20.5%),E:65 E:66 E:67 E:68
+moves,Next-session moves after the last reports,0.0480501,%,2025-11-05: -6.3%; 2026-02-05: +4.9%; 2026-05-06: +20.0%; 2026-07-29: +0.7%; average +4.8% (after-the-close reports: next close / report-day close; before the open: report-day close / prior close),E:65 D:1068 D:1069 E:66 D:1130 D:1131 E:67 D:1192 D:1193 E:68 D:1249 D:1250
+target,Mean analyst price target,169.446,USD,Yahoo financialData.targetMeanPrice (quote_summary_2026-10-26.json),Y:7886
+g_FY25Q3,Revenue growth FY25Q3,0.143757,%,"1,724.9 / 1,508.1 ($M) - 1 = +14.4%",X013 X008
+g_FY25Q4,Revenue growth FY25Q4,0.147521,%,"1,905.0 / 1,660.1 ($M) - 1 = +14.8%",X015 X010
+g_FY26Q1,Revenue growth FY26Q1,0.201273,%,"1,849.6 / 1,539.7 ($M) - 1 = +20.1%",X016 X011
+g_FY26Q2,Revenue growth FY26Q2,0.25638,%,"2,047.9 / 1,630.0 ($M) - 1 = +25.6%",X017 X012
+rev_ttm,"Revenue, four quarters to FY26Q2",7.5274e+09,USD,sum of four quarters = $7.53bn,X013 X015 X016 X017
+g_ttm,"Revenue growth, last four quarters on the four before",0.18768,%,$7.53bn / $6.34bn - 1 = +18.8%,P:rev_ttm X008 X010 X011 X012
+om_FY26Q2,GAAP operating margin FY26Q2,0.336589,%,"689.3 / 2,047.9 ($M)",X102 X017
+om_FY25Q2,GAAP operating margin FY25Q2,0.280982,%,"458.0 / 1,630.0 ($M)",X097 X012
+fcf_ttm,"Free cash flow, four quarters to FY26Q2",3.117e+09,USD,operating cash flow $3.40bn - capex $279M = $3.12bn,X177 X179 X180 X181 X193 X195 X196 X197
+fcf_margin,"Free cash flow margin, last four quarters",0.414087,%,$3.12bn / $7.53bn,P:fcf_ttm P:rev_ttm
+sbc_ttm,"Stock-based pay, four quarters to FY26Q2",2.961e+08,USD,sum of four quarters = $296M,X160 X162 X163 X164
+fcf_sbc,Free cash flow less stock-based pay,2.8209e+09,USD,$3.12bn - $296M,P:fcf_ttm P:sbc_ttm
+r40,Growth plus FCF margin,0.601768,%,+18.8% + 41.4%,P:g_ttm P:fcf_margin
+cap,Market cap at the last close,1.32061e+11,USD,"179.99 x 733,713,653 shares (cover of the 10-Q filed 2026-07-30, as of 2026-07-28) = $132.06bn",P:close X332
+ev,Enterprise value (balance sheet at 2026-06-30),1.29224e+11,USD,$132.06bn - cash and investments $3.33bn + debt $497M = $129.22bn,P:cap X243 X254 X268 X275
+ntm_rev,"Consensus revenue, next twelve months",8.56626e+09,USD,"FY26 consensus $8.12bn - reported FY26Q1+FY26Q2 $3.90bn + the same quarters a year later, $3.90bn x 1.114 (next year's $9.05bn / $8.12bn) = $8.57bn",Y:7673 X016 X017 Y:7789
+ntm_g,"Consensus growth, next twelve months on the last twelve",0.138011,%,$8.57bn / $7.53bn - 1 = +13.8%,P:ntm_rev P:rev_ttm
+ev_sales,"EV / consensus sales, next twelve months",15.0852,x,$129.22bn / $8.57bn,P:ev P:ntm_rev
+ev_sales_g,EV / sales per point of growth,1.09305,x,15.1x / 13.8,P:ev_sales P:ntm_g
+ntm_eps,"Consensus EPS, next twelve months",3.62181,USD/share,FY26 consensus 3.45 + 2/4 of the step to next year's 3.79 = 3.62,Y:7645 Y:7761
+pe,"Price / consensus EPS, next twelve months",49.6961,x,179.99 / 3.62,P:close P:ntm_eps
+fcf_yield,FCF yield,0.0236027,%,$3.12bn / $132.06bn,P:fcf_ttm P:cap
+growth_latest,"Revenue growth, latest quarter (FY26Q2)",0.25638,%,= P:g_FY26Q2,P:g_FY26Q2
+om_latest,"GAAP operating margin, latest quarter (FY26Q2)",0.336589,%,= P:om_FY26Q2,P:om_FY26Q2

@@ -1,0 +1,49 @@
+key,label,value,unit,calc,sources
+close,Close on 2026-10-23,380.55,USD,last bar of the daily price copy: 380.55,D:1310
+vs_ema50,Close against its 50-day EMA,0.0367215,%,EMA of all 1309 closes since 2021-08-09 (weight 2/51) = 367.07; 380.55 / 367.07 - 1 = +3.7%,D:2-1310
+vs_ema200,Close against its 200-day EMA,0.291578,%,EMA of all 1309 closes since 2021-08-09 (weight 2/201) = 294.64; 380.55 / 294.64 - 1 = +29.2%,D:2-1310
+hi52,52-week high (2026-10-06),432.325,USD,highest intraday high since 2025-10-23: 432.32 on 2026-10-06,D:1297
+off_hi,Close against the 52-week high,-0.119759,%,380.55 / 432.32 - 1 = -12.0%,P:hi52 D:1310
+ret_1m,Change over 21 sessions,-0.0240306,%,380.55 / 389.92 (2026-09-24) - 1 = -2.4%,D:1289 D:1310
+ret_3m,Change over 63 sessions,0.199263,%,380.55 / 317.32 (2026-07-27) - 1 = +19.9%,D:1247 D:1310
+eps_beats,"EPS above consensus, last 4 reports",4,count,2025-11-19: 0.93 against 0.89 (+4.4%); 2026-02-17: 1.03 against 0.94 (+9.9%); 2026-06-02: 0.85 against 0.8 (+6.6%); 2026-09-01: 1.02 against 0.98 (+4.3%),E:55 E:56 E:57 E:58
+moves,Next-session moves after the last reports,-0.072892,%,2025-11-19: -7.4%; 2026-02-17: -6.8%; 2026-06-02: -5.6%; 2026-09-01: -9.3%; average -7.3% (after-the-close reports: next close / report-day close; before the open: report-day close / prior close),E:55 D:1078 D:1079 E:56 D:1137 D:1138 E:57 D:1210 D:1211 E:58 D:1273 D:1274
+target,Mean analyst price target,398.52,USD,Yahoo financialData.targetMeanPrice (quote_summary_2026-10-26.json),Y:10593
+g_FY26Q1,Revenue growth FY26Q1,0.156615,%,"2,474.0 / 2,139.0 ($M) - 1 = +15.7%",X015 X010
+g_FY26Q2,Revenue growth FY26Q2,0.149313,%,"2,594.0 / 2,257.0 ($M) - 1 = +14.9%",X016 X011
+g_FY26Q3,Revenue growth FY26Q3,0.31149,%,"3,002.0 / 2,289.0 ($M) - 1 = +31.1%",X017 X012
+g_FY26Q4,Revenue growth FY26Q4,0.344637,%,"3,410.0 / 2,536.0 ($M) - 1 = +34.5%",X019 X014
+rev_ttm,"Revenue, four quarters to FY26Q4",1.148e+10,USD,sum of four quarters = $11.48bn,X015 X016 X017 X019
+g_ttm,"Revenue growth, last four quarters on the four before",0.244984,%,$11.48bn / $9.22bn - 1 = +24.5%,P:rev_ttm X010 X011 X012 X014
+om_FY26Q4,GAAP operating margin FY26Q4,0.0504399,%,"172.0 / 3,410.0 ($M)",X114 X019
+om_FY25Q4,GAAP operating margin FY25Q4,0.195978,%,"497.0 / 2,536.0 ($M)",X109 X014
+fcf_ttm,"Free cash flow, four quarters to FY26Q4",4.113e+09,USD,operating cash flow $4.55bn - capex $440M = $4.11bn,X197 X198 X199 X201 X216 X217 X218 X220
+fcf_margin,"Free cash flow margin, last four quarters",0.358275,%,$4.11bn / $11.48bn,P:fcf_ttm P:rev_ttm
+sbc_ttm,"Stock-based pay, four quarters to FY26Q4",1.774e+09,USD,sum of four quarters = $1.77bn,X178 X179 X180 X182
+fcf_sbc,Free cash flow less stock-based pay,2.339e+09,USD,$4.11bn - $1.77bn,P:fcf_ttm P:sbc_ttm
+r40,Growth plus FCF margin,0.60326,%,+24.5% + 35.8%,P:g_ttm P:fcf_margin
+cap,Market cap at the last close,3.1129e+11,USD,"380.55 x 818,000,000 shares (cover of the 10-K filed 2026-09-10, as of 2026-08-31) = $311.29bn",P:close X379
+ev,Enterprise value (balance sheet at 2026-07-31),3.05158e+11,USD,$311.29bn - cash and investments $7.91bn + debt $1.77bn = $305.16bn,P:cap X270 X285 X300 X306
+ntm_rev,"Consensus revenue, next twelve months",1.41734e+10,USD,4/4 of FY27 consensus $14.17bn + 0/4 of the next year's $16.23bn = $14.17bn (no quarter of the new fiscal year reported yet),Y:10380 Y:10496
+ntm_g,"Consensus growth, next twelve months on the last twelve",0.234616,%,$14.17bn / $11.48bn - 1 = +23.5%,P:ntm_rev P:rev_ttm
+ev_sales,"EV / consensus sales, next twelve months",21.5303,x,$305.16bn / $14.17bn,P:ev P:ntm_rev
+ev_sales_g,EV / sales per point of growth,0.917686,x,21.5x / 23.5,P:ev_sales P:ntm_g
+ntm_eps,"Consensus EPS, next twelve months",4.19114,USD/share,FY27 consensus 4.19 + 0/4 of the step to next year's 2.21 = 4.19,Y:10352 Y:10468
+pe,"Price / consensus EPS, next twelve months",90.7987,x,380.55 / 4.19,P:close P:ntm_eps
+fcf_yield,FCF yield,0.0132128,%,$4.11bn / $311.29bn,P:fcf_ttm P:cap
+beat_FY26Q1,"Revenue against the top of the guide, FY26Q1",0.00161943,%,reported $2.47bn / guided top $2.47bn - 1 = +0.2%; non-GAAP EPS 0.93 against 0.88-0.90: +0.03 a share on the top,X015 G003 R043 G004
+beat_FY26Q2,"Revenue against the top of the guide, FY26Q2",0.0015444,%,reported $2.59bn / guided top $2.59bn - 1 = +0.2%; non-GAAP EPS 1.03 against 0.93-0.95: +0.08 a share on the top,X016 G015 R064 G016
+beat_FY26Q3,"Revenue against the top of the guide, FY26Q3",0.0193548,%,reported $3.00bn / guided top $2.94bn - 1 = +1.9%; non-GAAP EPS 0.85 against 0.78-0.80: +0.05 a share on the top,X017 G028 R084 G029
+beat_FY26Q4,"Revenue against the top of the guide, FY26Q4",0.0163934,%,reported $3.41bn / guided top $3.35bn - 1 = +1.6%; non-GAAP EPS 1.02 against 0.96-0.98: +0.04 a share on the top,X019 G040 R114 G041
+usual_beat,"Average beat of the guide's top, last quarters",0.00972803,%,+0.2% +0.2% +1.9% +1.6% -> average over 4,P:beat_FY26Q1 P:beat_FY26Q2 P:beat_FY26Q3 P:beat_FY26Q4
+usual_ebeat,"Average EPS beat of the guide's top, $ a share, last quarters",0.05,USD/share,+0.03 +0.08 +0.05 +0.04 -> average over 4,P:beat_FY26Q1 P:beat_FY26Q2 P:beat_FY26Q3 P:beat_FY26Q4
+rev_at_beat,FY27Q1 revenue at the usual beat,3.3422e+09,USD,guided top $3.31bn x (1 +1.0%),G053 P:usual_beat
+eps_at_beat,FY27Q1 EPS at the usual beat,1.03,USD/share,guided top 0.98 +0.050,G054 P:usual_ebeat
+g_guide,Growth the FY27Q1 revenue guide implies,0.335893,%,midpoint $3.31bn / FY26Q1 revenue $2.47bn - 1,G053 X015
+growth_latest,"Revenue growth, latest quarter (FY26Q4)",0.344637,%,= P:g_FY26Q4,P:g_FY26Q4
+om_latest,"GAAP operating margin, latest quarter (FY26Q4)",0.0504399,%,= P:om_FY26Q4,P:om_FY26Q4
+ngm_latest,"Non-GAAP operating margin, latest quarter (FY26Q4)",0.296481,%,"the reader's non-GAAP operating margin, or non-GAAP operating income / revenue",R112
+cons_vs_top,FY27Q1 revenue consensus against the guide's top,-0.000754396,%,$3.31bn / $3.31bn - 1,Y:10148 G053
+fy_move,FY27 revenue guide at the last report,first given,text,no FY27 guide in the release before,G058
+g_organic,"Revenue growth without acquisitions, FY26Q3",0.141983,%,revenue $3.00bn - acquired $388M = $2.61bn / FY25Q3 revenue $2.29bn - 1 = +14.2%,X017 R101 X012
+acq,Acquisitions in the period,goodwill up 10%+ of a year's revenue; +14% growth without them (FY26Q3),text,goodwill change over the period against the last four quarters' revenue (cyber/xbrl goodwill rows); growth without them = P:g_organic,P:g_organic

@@ -1,0 +1,5 @@
+id,event,speaker,role,topic,kind,value,unit,period,statement,text,line,quote,quote_on_line,value_in_quote,xbrl_check,xbrl_concept,xbrl_value,check_note
+C002,FY26Q1_call,Jay Chaudhry,ceo,arr,number,26,%,FY26Q1,ARR growth accelerated to 26% year over year.,ir/FY26Q1/ZS-USQ_Transcript_2025-11-25.pdf.txt,64,ARR growth accelerated to 26% year over year,True,True,,,,
+C446,FY26Q4_call,Kevin Rubin,cfo,fcf_capex,number,279,USD million,FY26Q4,Q4 operating cash flow was $279 million.,ir/FY26Q4/ZS-USQ_Transcript_2026-09-03.pdf.txt,249,we generated $279 million in operating cash flow,True,True,,,,
+C609,investor_day,Kevin Rubin,cfo,arr,number,14,%,FY26,FY26 net new ARR growth excluding Red Canary was 14%.,calls/investor_day_2026-10-06/5_cfo_financial_perspectives/transcript.txt.txt,7,we delivered 14% net new ARR growth for the year,True,True,,,,
+C529,investor_day,Jay Chaudhry,ceo,products_ai,number,200,count,FY26,"Over 200 globally distributed infrastructure locations (deck; the Whisper transcript reads '200,000').",ir/investor_day_2026-10-06/investor-day-keynote-pdf-v2_final.pdf.txt,13,200+ globally distributed infrastructure locations,True,True,,,,

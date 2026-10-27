@@ -1,0 +1,15 @@
+# Nothing private goes up by accident: no sources, text copies, data, secrets or scratch files.
+.env
+*.env
+sources/
+text/
+data/
+out/
+logs/
+_run/
+__pycache__/
+*.pyc
+*.xlsx
+*.pdf
+*.m4a
+*.tsv

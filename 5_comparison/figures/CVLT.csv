@@ -1,0 +1,35 @@
+key,label,value,unit,calc,sources
+close,Close on 2026-10-26,167.73,USD,last bar of the daily price copy: 167.73,D:1311
+vs_ema50,Close against its 50-day EMA,0.129057,%,EMA of all 1310 closes since 2021-08-09 (weight 2/51) = 148.56; 167.73 / 148.56 - 1 = +12.9%,D:2-1311
+vs_ema200,Close against its 200-day EMA,0.256016,%,EMA of all 1310 closes since 2021-08-09 (weight 2/201) = 133.54; 167.73 / 133.54 - 1 = +25.6%,D:2-1311
+hi52,52-week high (2025-10-27),175.03,USD,highest intraday high since 2025-10-26: 175.03 on 2025-10-27,D:1061
+off_hi,Close against the 52-week high,-0.0417071,%,167.73 / 175.03 - 1 = -4.2%,P:hi52 D:1311
+ret_1m,Change over 21 sessions,0.152467,%,167.73 / 145.54 (2026-09-25) - 1 = +15.2%,D:1290 D:1311
+ret_3m,Change over 63 sessions,0.397517,%,167.73 / 120.02 (2026-07-28) - 1 = +39.8%,D:1248 D:1311
+eps_beats,"EPS above consensus, last 4 reports",3,count,2025-10-28: 0.91 against 0.94 (-3.3%); 2026-01-27: 1.17 against 0.98 (+19.2%); 2026-04-28: 1.28 against 1.09 (+17.7%); 2026-07-28: 1.42 against 1.16 (+22.2%),E:78 E:79 E:80 E:81
+moves,Next-session moves after the last reports,-0.140657,%,2025-10-28: -16.3%; 2026-01-27: -31.1%; 2026-04-28: +10.8%; 2026-07-28: -19.7%; average -14.1% (after-the-close reports: next close / report-day close; before the open: report-day close / prior close),E:78 D:1061 D:1062 E:79 D:1122 D:1123 E:80 D:1185 D:1186 E:81 D:1247 D:1248
+target,Mean analyst price target,165.259,USD,Yahoo financialData.targetMeanPrice (quote_summary_2026-10-27.json),Y:2792
+g_FY26Q2,Revenue growth FY26Q2,0.183944,%,276.2 / 233.3 ($M) - 1 = +18.4%,X014 X009
+g_FY26Q3,Revenue growth FY26Q3,0.194959,%,313.8 / 262.6 ($M) - 1 = +19.5%,X015 X010
+g_FY26Q4,Revenue growth FY26Q4,0.133265,%,311.7 / 275.0 ($M) - 1 = +13.3%,X017 X012
+g_FY27Q1,Revenue growth FY27Q1,0.114027,%,314.1 / 282.0 ($M) - 1 = +11.4%,X018 X013
+rev_ttm,"Revenue, four quarters to FY27Q1",1.21584e+09,USD,sum of four quarters = $1.22bn,X014 X015 X017 X018
+g_ttm,"Revenue growth, last four quarters on the four before",0.154729,%,$1.22bn / $1.05bn - 1 = +15.5%,P:rev_ttm X009 X010 X012 X013
+om_FY27Q1,GAAP operating margin FY27Q1,0.0818735,%,25.7 / 314.1 ($M),X108 X018
+om_FY26Q1,GAAP operating margin FY26Q1,0.0889821,%,25.1 / 282.0 ($M),X103 X013
+fcf_ttm,"Free cash flow, four quarters to FY27Q1",2.5845e+08,USD,operating cash flow $265M - capex $6.2M = $258M,X186 X187 X189 X190 X204 X205 X207 X208
+fcf_margin,"Free cash flow margin, last four quarters",0.212569,%,$258M / $1.22bn,P:fcf_ttm P:rev_ttm
+sbc_ttm,"Stock-based pay, four quarters to FY27Q1",1.28535e+08,USD,sum of four quarters = $129M,X168 X169 X171 X172
+fcf_sbc,Free cash flow less stock-based pay,1.29915e+08,USD,$258M - $129M,P:fcf_ttm P:sbc_ttm
+r40,Growth plus FCF margin,0.367298,%,+15.5% + 21.3%,P:g_ttm P:fcf_margin
+cap,Market cap at the last close,6.9515e+09,USD,"167.73 x 41,444,564 shares (cover of the 10-Q filed 2026-07-29, as of 2026-07-27) = $6.95bn",P:close X317
+ev,Enterprise value (balance sheet at 2026-06-30),6.90359e+09,USD,$6.95bn - cash and investments $930M + debt $882M = $6.90bn,P:cap X256 X261
+ntm_rev,"Consensus revenue, next twelve months",1.34121e+09,USD,"FY27 consensus $1.31bn - reported FY27Q1 $314M + the same quarters a year later, $314M x 1.113 (next year's $1.45bn / $1.31bn) = $1.34bn",Y:2579 X018 Y:2695
+ntm_g,"Consensus growth, next twelve months on the last twelve",0.103111,%,$1.34bn / $1.22bn - 1 = +10.3%,P:ntm_rev P:rev_ttm
+ev_sales,"EV / consensus sales, next twelve months",5.14728,x,$6.90bn / $1.34bn,P:ev P:ntm_rev
+ev_sales_g,EV / sales per point of growth,0.499198,x,5.1x / 10.3,P:ev_sales P:ntm_g
+ntm_eps,"Consensus EPS, next twelve months",5.64474,USD/share,FY27 consensus 5.46 + 1/4 of the step to next year's 6.20 = 5.64,Y:2551 Y:2667
+pe,"Price / consensus EPS, next twelve months",29.7144,x,167.73 / 5.64,P:close P:ntm_eps
+fcf_yield,FCF yield,0.037179,%,$258M / $6.95bn,P:fcf_ttm P:cap
+growth_latest,"Revenue growth, latest quarter (FY27Q1)",0.114027,%,= P:g_FY27Q1,P:g_FY27Q1
+om_latest,"GAAP operating margin, latest quarter (FY27Q1)",0.0818735,%,= P:om_FY27Q1,P:om_FY27Q1

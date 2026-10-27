@@ -1,0 +1,17 @@
+key,label,value,unit,calc,sources
+close,Close on 2026-10-23,31.07,USD,last bar of the daily price copy: 31.07,D:1310
+vs_ema50,Close against its 50-day EMA,0.0614914,%,EMA of all 1309 closes since 2021-08-09 (weight 2/51) = 29.27; 31.07 / 29.27 - 1 = +6.1%,D:2-1310
+vs_ema200,Close against its 200-day EMA,0.117272,%,EMA of all 1309 closes since 2021-08-09 (weight 2/201) = 27.81; 31.07 / 27.81 - 1 = +11.7%,D:2-1310
+hi52,52-week high (2026-07-10),32.8,USD,highest intraday high since 2025-10-23: 32.80 on 2026-07-10,D:1236
+off_hi,Close against the 52-week high,-0.0527439,%,31.07 / 32.80 - 1 = -5.3%,P:hi52 D:1310
+ret_1m,Change over 21 sessions,0.0429674,%,31.07 / 29.79 (2026-09-24) - 1 = +4.3%,D:1289 D:1310
+ret_3m,Change over 63 sessions,0.0604096,%,31.07 / 29.30 (2026-07-27) - 1 = +6.0%,D:1247 D:1310
+eps_beats,"EPS above consensus, last 4 reports",2,count,2025-10-29: 0.28 against 0.27 (+3.5%); 2026-02-11: 0.32 against 0.3 (+6.3%); 2026-05-07: 0.25 against 0.28 (-10.7%); 2026-07-29: 0.25 against 0.28 (-11.8%),E:105 E:106 E:107 E:108
+moves,Next-session moves after the last reports,-0.0214217,%,2025-10-29: -2.4%; 2026-02-11: +5.4%; 2026-05-07: +5.6%; 2026-07-29: -17.2%; average -2.1% (after-the-close reports: next close / report-day close; before the open: report-day close / prior close),E:105 D:1062 D:1063 E:106 D:1133 D:1134 E:107 D:1192 D:1193 E:108 D:1248 D:1249
+target,Mean analyst price target,30.5,USD,Yahoo financialData.targetMeanPrice (quote_summary_2026-10-26.json),Y:1812
+cap,Market cap at the last close,1.34055e+09,USD,"31.07 x 43,145,971 shares (cover of the 20-F filed 2026-03-31, as of 2025-12-31) = $1.34bn",P:close X063
+ev,Enterprise value (balance sheet at 2025-12-31),1.01342e+09,USD,$1.34bn - cash and investments $327M + debt $0.0M = $1.01bn,P:cap X044 X047 X050
+ntm_rev,"Consensus revenue, next twelve months",3.45456e+08,USD,2/4 of FY26 consensus $332M + 2/4 of the next year's $359M = $345M (no quarterly XBRL: even quarters assumed),Y:1599 Y:1715
+ev_sales,"EV / consensus sales, next twelve months",2.93356,x,$1.01bn / $345M,P:ev P:ntm_rev
+ntm_eps,"Consensus EPS, next twelve months",1.29,USD/share,FY26 consensus 1.22 + 2/4 of the step to next year's 1.36 = 1.29,Y:1571 Y:1687
+pe,"Price / consensus EPS, next twelve months",24.0853,x,31.07 / 1.29,P:close P:ntm_eps

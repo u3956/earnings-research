@@ -1,0 +1,7 @@
+id,given_in,target_period,item,basis,low,high,unit,scale,growth_stated,text,line,quote,quote_on_line,value_in_quote,xbrl_check,xbrl_concept,xbrl_value,check_note
+G001,FY25Q4,FY26Q1,revenue,gaap,772,774,USD,millions,~23,ir/FY26Q1/Zscaler Q1'26 Earnings Call Presentation FINAL.pdf.txt,41,$772M - $774M,True,True,,,,
+G044,FY26Q3,FY26,arr,kpi,3.740,3.749,USD,billions,~24,sec/2026-05-26_8-K_0001713683-26-000095/zs-04302026_991.htm.txt,43,"Annual Recurring Revenue of $3.740 billion to $3.749 billion, growth of approximately 24%",True,True,,,,
+G054,FY26Q4,FY27Q1,revenue,gaap,935,939,USD,millions,~19,sec/2026-09-03_8-K_0001713683-26-000156/zs-07312026_991.htm.txt,29,"Revenue of $935 million to $939 million, approximately 19% year-over-year growth.",True,True,,,,
+G058,FY26Q4,FY27Q1,eps_diluted,non_gaap,1.15,1.16,USD/share,units,,sec/2026-09-03_8-K_0001713683-26-000156/zs-07312026_991.htm.txt,32,Non-GAAP net income per share of approximately $1.15 to $1.16,True,True,,,,
+G061,FY26Q4,FY27,arr,kpi,4.396,4.426,USD,billions,~16.6-17.4,sec/2026-09-03_8-K_0001713683-26-000156/zs-07312026_991.htm.txt,34,"ARR of $4.396 billion to $4.426 billion, growth of approximately 16.6% to 17.4%.",True,True,,,,
+G062,FY26Q4,FY27,revenue,gaap,3.908,3.938,USD,billions,16.6-17.5,sec/2026-09-03_8-K_0001713683-26-000156/zs-07312026_991.htm.txt,35,"Revenue of approximately $3.908 billion to $3.938 billion, growth of 16.6% to 17.5%.",True,True,,,,

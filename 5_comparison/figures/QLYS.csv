@@ -1,0 +1,35 @@
+key,label,value,unit,calc,sources
+close,Close on 2026-10-23,216.7,USD,last bar of the daily price copy: 216.70,D:1310
+vs_ema50,Close against its 50-day EMA,0.185988,%,EMA of all 1309 closes since 2021-08-09 (weight 2/51) = 182.72; 216.70 / 182.72 - 1 = +18.6%,D:2-1310
+vs_ema200,Close against its 200-day EMA,0.455596,%,EMA of all 1309 closes since 2021-08-09 (weight 2/201) = 148.87; 216.70 / 148.87 - 1 = +45.6%,D:2-1310
+hi52,52-week high (2026-10-23),219.03,USD,highest intraday high since 2025-10-23: 219.03 on 2026-10-23,D:1310
+off_hi,Close against the 52-week high,-0.0106378,%,216.70 / 219.03 - 1 = -1.1%,P:hi52 D:1310
+ret_1m,Change over 21 sessions,0.184541,%,216.70 / 182.94 (2026-09-24) - 1 = +18.5%,D:1289 D:1310
+ret_3m,Change over 63 sessions,0.607686,%,216.70 / 134.79 (2026-07-27) - 1 = +60.8%,D:1247 D:1310
+eps_beats,"EPS above consensus, last 4 reports",4,count,2025-11-04: 1.86 against 1.56 (+19.2%); 2026-02-05: 1.87 against 1.78 (+4.9%); 2026-05-05: 1.95 against 1.8 (+8.4%); 2026-08-04: 1.98 against 1.78 (+10.9%),E:54 E:55 E:56 E:57
+moves,Next-session moves after the last reports,0.0490428,%,2025-11-04: +20.6%; 2026-02-05: -13.3%; 2026-05-05: -1.4%; 2026-08-04: +13.8%; average +4.9% (after-the-close reports: next close / report-day close; before the open: report-day close / prior close),E:54 D:1067 D:1068 E:55 D:1130 D:1131 E:56 D:1191 D:1192 E:57 D:1253 D:1254
+target,Mean analyst price target,181.029,USD,Yahoo financialData.targetMeanPrice (quote_summary_2026-10-26.json),Y:3522
+g_FY25Q3,Revenue growth FY25Q3,0.104083,%,169.9 / 153.9 ($M) - 1 = +10.4%,X013 X008
+g_FY25Q4,Revenue growth FY25Q4,0.10108,%,175.3 / 159.2 ($M) - 1 = +10.1%,X015 X010
+g_FY26Q1,Revenue growth FY26Q1,0.0984309,%,175.6 / 159.9 ($M) - 1 = +9.8%,X016 X011
+g_FY26Q2,Revenue growth FY26Q2,0.110403,%,182.2 / 164.1 ($M) - 1 = +11.0%,X017 X012
+rev_ttm,"Revenue, four quarters to FY26Q2",7.02977e+08,USD,sum of four quarters = $703M,X013 X015 X016 X017
+g_ttm,"Revenue growth, last four quarters on the four before",0.103542,%,$703M / $637M - 1 = +10.4%,P:rev_ttm X008 X010 X011 X012
+om_FY26Q2,GAAP operating margin FY26Q2,0.339794,%,61.9 / 182.2 ($M),X102 X017
+om_FY25Q2,GAAP operating margin FY25Q2,0.313339,%,51.4 / 164.1 ($M),X097 X012
+fcf_ttm,"Free cash flow, four quarters to FY26Q2",3.13957e+08,USD,operating cash flow $321M - capex $7.0M = $314M,X177 X179 X180 X181 X194 X196 X197 X198
+fcf_margin,"Free cash flow margin, last four quarters",0.446611,%,$314M / $703M,P:fcf_ttm P:rev_ttm
+sbc_ttm,"Stock-based pay, four quarters to FY26Q2",7.8253e+07,USD,sum of four quarters = $78.3M,X160 X162 X163 X164
+fcf_sbc,Free cash flow less stock-based pay,2.35704e+08,USD,$314M - $78.3M,P:fcf_ttm P:sbc_ttm
+r40,Growth plus FCF margin,0.550152,%,+10.4% + 44.7%,P:g_ttm P:fcf_margin
+cap,Market cap at the last close,7.49674e+09,USD,"216.70 x 34,595,001 shares (cover of the 10-Q filed 2026-08-04, as of 2026-07-22) = $7.50bn",P:close X308
+ev,Enterprise value (balance sheet at 2026-06-30),7.07044e+09,USD,$7.50bn - cash and investments $426M + debt $0.0M = $7.07bn,P:cap X232 X246
+ntm_rev,"Consensus revenue, next twelve months",7.64475e+08,USD,"FY26 consensus $735M - reported FY26Q1+FY26Q2 $358M + the same quarters a year later, $358M x 1.082 (next year's $795M / $735M) = $764M",Y:3309 X016 X017 Y:3425
+ntm_g,"Consensus growth, next twelve months on the last twelve",0.0874827,%,$764M / $703M - 1 = +8.7%,P:ntm_rev P:rev_ttm
+ev_sales,"EV / consensus sales, next twelve months",9.24875,x,$7.07bn / $764M,P:ev P:ntm_rev
+ev_sales_g,EV / sales per point of growth,1.05721,x,9.2x / 8.7,P:ev_sales P:ntm_g
+ntm_eps,"Consensus EPS, next twelve months",8.13279,USD/share,FY26 consensus 7.81 + 2/4 of the step to next year's 8.45 = 8.13,Y:3281 Y:3397
+pe,"Price / consensus EPS, next twelve months",26.6452,x,216.70 / 8.13,P:close P:ntm_eps
+fcf_yield,FCF yield,0.0418792,%,$314M / $7.50bn,P:fcf_ttm P:cap
+growth_latest,"Revenue growth, latest quarter (FY26Q2)",0.110403,%,= P:g_FY26Q2,P:g_FY26Q2
+om_latest,"GAAP operating margin, latest quarter (FY26Q2)",0.339794,%,= P:om_FY26Q2,P:om_FY26Q2

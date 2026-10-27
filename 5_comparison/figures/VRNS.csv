@@ -1,0 +1,38 @@
+key,label,value,unit,calc,sources
+close,Close on 2026-10-26,49.15,USD,last bar of the daily price copy: 49.15,D:1311
+vs_ema50,Close against its 50-day EMA,0.0559549,%,EMA of all 1310 closes since 2021-08-09 (weight 2/51) = 46.55; 49.15 / 46.55 - 1 = +5.6%,D:2-1311
+vs_ema200,Close against its 200-day EMA,0.210027,%,EMA of all 1310 closes since 2021-08-09 (weight 2/201) = 40.62; 49.15 / 40.62 - 1 = +21.0%,D:2-1311
+hi52,52-week high (2025-10-27),63.8,USD,highest intraday high since 2025-10-26: 63.80 on 2025-10-27,D:1061
+off_hi,Close against the 52-week high,-0.229624,%,49.15 / 63.80 - 1 = -23.0%,P:hi52 D:1311
+ret_1m,Change over 21 sessions,0.0627027,%,49.15 / 46.25 (2026-09-25) - 1 = +6.3%,D:1290 D:1311
+ret_3m,Change over 63 sessions,0.100291,%,49.15 / 44.67 (2026-07-28) - 1 = +10.0%,D:1248 D:1311
+eps_beats,"EPS above consensus, last 4 reports",4,count,2025-10-28: 0.06 against 0.05 (+11.0%); 2026-02-03: 0.08 against 0.03 (+145.8%); 2026-04-28: 0.06 against -0.05 (+209.8%); 2026-07-28: 0.04 against 0.01 (+510.7%),E:48 E:49 E:50 E:51
+moves,Next-session moves after the last reports,-0.152936,%,2025-10-28: -48.7%; 2026-02-03: -10.8%; 2026-04-28: +7.3%; 2026-07-28: -9.0%; average -15.3% (after-the-close reports: next close / report-day close; before the open: report-day close / prior close),E:48 D:1062 D:1063 E:49 D:1128 D:1129 E:50 D:1186 D:1187 E:51 D:1248 D:1249
+target,Mean analyst price target,51.0694,USD,Yahoo financialData.targetMeanPrice (quote_summary_2026-10-27.json),Y:4822
+g_FY25Q3,Revenue growth FY25Q3,0.0912351,%,161.6 / 148.1 ($M) - 1 = +9.1%,X013 X008
+g_FY25Q4,Revenue growth FY25Q4,0.0937141,%,173.4 / 158.5 ($M) - 1 = +9.4%,X015 X010
+g_FY26Q1,Revenue growth FY26Q1,0.269038,%,173.1 / 136.4 ($M) - 1 = +26.9%,X016 X011
+g_FY26Q2,Revenue growth FY26Q2,0.183093,%,180.0 / 152.2 ($M) - 1 = +18.3%,X017 X012
+rev_ttm,"Revenue, four quarters to FY26Q2",6.88095e+08,USD,sum of four quarters = $688M,X013 X015 X016 X017
+g_ttm,"Revenue growth, last four quarters on the four before",0.156136,%,$688M / $595M - 1 = +15.6%,P:rev_ttm X008 X010 X011 X012
+om_FY26Q2,GAAP operating margin FY26Q2,-0.225699,%,-40.6 / 180.0 ($M),X102 X017
+om_FY25Q2,GAAP operating margin FY25Q2,-0.240216,%,-36.6 / 152.2 ($M),X097 X012
+fcf_ttm,"Free cash flow, four quarters to FY26Q2",1.18303e+08,USD,operating cash flow $138M - capex $16.3M - capitalized software $3.6M = $118M,X177 X179 X180 X181 X194 X196 X197 X198 X207 X209 X210 X211
+fcf_margin,"Free cash flow margin, last four quarters",0.171928,%,$118M / $688M,P:fcf_ttm P:rev_ttm
+sbc_ttm,"Stock-based pay, four quarters to FY26Q2",1.32486e+08,USD,sum of four quarters = $132M,X160 X162 X163 X164
+fcf_sbc,Free cash flow less stock-based pay,-1.4183e+07,USD,$118M - $132M,P:fcf_ttm P:sbc_ttm
+r40,Growth plus FCF margin,0.328064,%,+15.6% + 17.2%,P:g_ttm P:fcf_margin
+cap,Market cap at the last close,5.64539e+09,USD,"49.15 x 114,860,485 shares (cover of the 10-Q filed 2026-07-29, as of 2026-07-24) = $5.65bn",P:close X349
+ev,Enterprise value (balance sheet at 2026-06-30),5.22529e+09,USD,$5.65bn - cash and investments $873M + debt $453M = $5.23bn,P:cap X246 X260 X272 X286
+ntm_rev,"Consensus revenue, next twelve months",8.03606e+08,USD,"FY26 consensus $738M - reported FY26Q1+FY26Q2 $353M + the same quarters a year later, $353M x 1.186 (next year's $875M / $738M) = $804M",Y:4609 X016 X017 Y:4725
+ntm_g,"Consensus growth, next twelve months on the last twelve",0.167871,%,$804M / $688M - 1 = +16.8%,P:ntm_rev P:rev_ttm
+ev_sales,"EV / consensus sales, next twelve months",6.50231,x,$5.23bn / $804M,P:ev P:ntm_rev
+ev_sales_g,EV / sales per point of growth,0.387339,x,6.5x / 16.8,P:ev_sales P:ntm_g
+ntm_eps,"Consensus EPS, next twelve months",0.27969,USD/share,FY26 consensus 0.15 + 2/4 of the step to next year's 0.41 = 0.28,Y:4581 Y:4697
+pe,"Price / consensus EPS, next twelve months",175.73,x,49.15 / 0.28,P:close P:ntm_eps
+fcf_yield,FCF yield,0.0209557,%,$118M / $5.65bn,P:fcf_ttm P:cap
+growth_latest,"Revenue growth, latest quarter (FY26Q2)",0.183093,%,= P:g_FY26Q2,P:g_FY26Q2
+om_latest,"GAAP operating margin, latest quarter (FY26Q2)",-0.225699,%,= P:om_FY26Q2,P:om_FY26Q2
+acq,Acquisitions in the period,goodwill up 10%+ of a year's revenue,text,goodwill change over the period against the last four quarters' revenue (cyber/xbrl goodwill rows),
+deal_price,Cash price per share in the agreed takeover,49.75,USD,text/VRNS/sec/2026-10-15_8-K_0001213900-26-109901/ea030861001ex99-1.htm.txt line 6,V:205
+spread,Deal price against the last close,0.0122075,%,49.75 / 49.15 - 1,P:deal_price P:close

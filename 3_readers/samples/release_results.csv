@@ -1,0 +1,8 @@
+id,quarter,item,basis,duration,value,unit,scale,yoy_stated,text,line,quote,quote_on_line,value_in_quote,xbrl_check,xbrl_concept,xbrl_value,check_note
+R001,FY26Q1,revenue,gaap,3M,788.1,USD,millions,26,sec/2025-11-25_8-K_0001713683-25-000203/zs-10312025_991.htm.txt,14,"Revenue: $788.1 million, an increase of 26% year-over-year.",True,True,ok,us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax,788112000.0,
+R002,FY26Q1,gross_margin,gaap,3M,77,%,units,,sec/2025-11-25_8-K_0001713683-25-000203/zs-10312025_991.htm.txt,226,GAAP gross margin | 77% | 77%,True,True,,,,
+R093,FY26Q4,eps_diluted,non_gaap,3M,1.19,USD/share,units,,sec/2026-09-03_8-K_0001713683-26-000156/zs-07312026_991.htm.txt,271,"Non-GAAP net income per share, diluted | $1.19 | $0.89 | $4.21 | $3.28",True,True,,,,
+R094,FY26Q4,arr,kpi,instant,3771,USD,millions,25,sec/2026-09-03_8-K_0001713683-26-000156/zs-07312026_991.htm.txt,12,"ARR: Grew 25% year over year to $3,771 million",True,True,,,,
+R108,FY26Q4,customers_1m_arr,kpi,instant,785,count,units,,ir/FY26Q4/Q4'26 Supplemental Financials Final.xlsx.txt,333,Customers with equal or greater than $1.0 million ARR | 449 | 584 | 619 | 633 | 664 | 698 | 728 | 748 | 785,True,True,,,,
+R080,FY26Q3,other:zero_trust_everywhere_enterprises,kpi,instant,700,count,units,,ir/FY26Q3/2026 Q3 ZS Shareholder Letter PDF FINAL.pdf.txt,412,than 700 Zero Trust Everywhere,True,True,,,,
+R025,FY26Q1,other:data_security_arr,kpi,instant,450,USD,millions,,ir/FY26Q1/Zscaler Q1'26 Earnings Call Presentation FINAL.pdf.txt,70,~$450M,True,True,,,,

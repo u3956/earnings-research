@@ -1,0 +1,17 @@
+key,label,value,unit,calc,sources
+close,Close on 2026-10-23,159.03,USD,last bar of the daily price copy: 159.03,D:1310
+vs_ema50,Close against its 50-day EMA,0.17069,%,EMA of all 1309 closes since 2021-08-09 (weight 2/51) = 135.84; 159.03 / 135.84 - 1 = +17.1%,D:2-1310
+vs_ema200,Close against its 200-day EMA,0.0973749,%,EMA of all 1309 closes since 2021-08-09 (weight 2/201) = 144.92; 159.03 / 144.92 - 1 = +9.7%,D:2-1310
+hi52,52-week high (2025-10-28),210.66,USD,highest intraday high since 2025-10-23: 210.66 on 2025-10-28,D:1062
+off_hi,Close against the 52-week high,-0.245087,%,159.03 / 210.66 - 1 = -24.5%,P:hi52 D:1310
+ret_1m,Change over 21 sessions,0.16685,%,159.03 / 136.29 (2026-09-24) - 1 = +16.7%,D:1289 D:1310
+ret_3m,Change over 63 sessions,0.197966,%,159.03 / 132.75 (2026-07-27) - 1 = +19.8%,D:1247 D:1310
+eps_beats,"EPS above consensus, last 4 reports",4,count,2025-10-28: 3.94 against 2.45 (+60.7%); 2026-02-12: 3.4 against 2.77 (+22.9%); 2026-04-30: 2.5 against 2.4 (+4.0%); 2026-07-30: 2.55 against 2.45 (+4.2%),E:108 E:109 E:110 E:111
+moves,Next-session moves after the last reports,-0.071141,%,2025-10-28: +6.2%; 2026-02-12: -6.8%; 2026-04-30: -19.6%; 2026-07-30: -8.2%; average -7.1% (after-the-close reports: next close / report-day close; before the open: report-day close / prior close),E:108 D:1061 D:1062 E:109 D:1134 D:1135 E:110 D:1187 D:1188 E:111 D:1249 D:1250
+target,Mean analyst price target,147.115,USD,Yahoo financialData.targetMeanPrice (quote_summary_2026-10-26.json),Y:5186
+cap,Market cap at the last close,1.67929e+10,USD,"159.03 x 105,596,035 shares (cover of the 20-F filed 2026-03-31, as of 2025-12-31) = $16.79bn",P:close X063
+ev,Enterprise value (balance sheet at 2025-12-31),1.4949e+10,USD,$16.79bn - cash and investments $3.82bn + debt $1.97bn = $14.95bn,P:cap X042 X045 X048 X050
+ntm_rev,"Consensus revenue, next twelve months",2.88236e+09,USD,2/4 of FY26 consensus $2.80bn + 2/4 of the next year's $2.96bn = $2.88bn (no quarterly XBRL: even quarters assumed),Y:4973 Y:5089
+ev_sales,"EV / consensus sales, next twelve months",5.1864,x,$14.95bn / $2.88bn,P:ev P:ntm_rev
+ntm_eps,"Consensus EPS, next twelve months",10.8575,USD/share,FY26 consensus 10.44 + 2/4 of the step to next year's 11.28 = 10.86,Y:4945 Y:5061
+pe,"Price / consensus EPS, next twelve months",14.647,x,159.03 / 10.86,P:close P:ntm_eps
