@@ -1,100 +1,102 @@
 # 2. Transcripts
 
-What management says on a call, and how it answers the analysts, is only in the transcripts. This page shows how they
-were gathered, made, read and checked. The transcripts themselves are not published: the official ones are licensed,
-and both kinds are the company's words. A few short lines are quoted below and in the samples.
+Management commentary and the analyst Q&A exist only in the call transcripts. This folder documents how the
+transcripts were obtained, produced, extracted and verified. The transcripts are not published: the official versions
+are licensed, and both versions reproduce the company's own words. A few short lines are quoted here and in the
+samples.
 
-## Two kinds of transcript
+## Official and in-house transcripts
 
-| | Official transcripts | Our own transcripts |
+| | Official transcripts | In-house transcripts |
 |---|---|---|
-| Covers | The four FY26 earnings calls | The Q4 call (63 minutes) and the six recorded sections of the investor day (3 hours 27 minutes) |
-| Comes from | The company's investor relations site, edited, with speakers named | The call's replay and the company's recordings, transcribed on a local GPU |
-| Good at | Who said what | A timestamp on every line; the only text there is of the investor day |
-| Weak at | No timestamps; edited, and sometimes wrong | No speaker labels; mishears names and numbers |
+| Coverage | The four FY26 earnings calls | The Q4 call (63 minutes) and the six recorded sections of the investor day (3 hours 27 minutes) |
+| Source | The company's investor relations site; edited, with speakers identified | The call replay and the company's recordings, transcribed on a local GPU |
+| Strengths | Speaker attribution | A timestamp on every line; the only text of the investor day |
+| Weaknesses | No timestamps; edited, and occasionally wrong | No speaker labels; names and figures can be misheard |
 
-The Q4 call was transcribed both ways, so each version could check the other.
+The Q4 call was transcribed both ways so that each version could be checked against the other.
 
-## How our own transcripts are made
+## In-house transcription
 
-- **The audio as served.** The Q4 call comes from its replay. The investor day comes from the company's six section
-  recordings; its full-length recording was skipped as a duplicate (the sections miss only about four minutes of
-  introductions and transitions).
+- **Audio as published.** The Q4 call is taken from its replay, and the investor day from the company's six section
+  recordings. The full-length investor-day recording was not used, as it duplicates the sections, which omit only
+  about four minutes of introductions and transitions.
 - **Whisper large-v3 on a local GPU**, with English forced and a list of the company's own spellings of its products,
-  executives and acquisitions, so the names come out right. A lock file keeps two transcriptions off the GPU at once.
-- **A timestamp on every line** (`[hh:mm:ss]`), so any quote can be found again in the audio.
+  executives and acquisitions. A lock file prevents two transcriptions from running on the GPU at once.
+- **A timestamp on every line** (`[hh:mm:ss]`), so any quote can be located in the audio.
 
-The excerpt at the end of this page is that step.
+The excerpt at the end of this page shows this step.
 
-## What the call reader built
+## Extraction
 
-One reader agent read the four official transcripts, our investor-day transcripts and the investor-day deck, and
-filled three tables. Every row points to the exact line it came from.
+The call reader processed the four official transcripts, the in-house investor-day transcripts and the investor-day
+presentation, and completed three tables. Every entry references the exact line it came from.
 
-| Table | Rows | What a row holds |
+| Table | Entries | Content |
 |---|---|---|
-| statements | 720 | One number or claim from management, with its speaker, topic and period, a one-line statement, and the exact line it came from. By event: Q1 94, Q2 138, Q3 137, Q4 155, investor day 196 (137 from the recordings, 59 from the deck) |
-| qa | 81 | One analyst question: who asked it, the question and the answer in a line each, and a grade. 43 were answered directly, 33 in part and 5 dodged; when not direct, the row says what was asked and not answered |
-| wording | 43 | How management's wording on one topic moved from one event to the next: stronger, weaker, new, dropped or the same, with both quotes |
+| statements | 720 | One figure or claim from management, with speaker, topic and period, a one-line statement and its source line. By event: Q1 94, Q2 138, Q3 137, Q4 155, investor day 196 (137 from the recordings, 59 from the presentation) |
+| qa | 81 | One analyst question: the analyst, the question and the answer summarized in a line each, and a grade. 43 were answered directly, 33 partially and 5 were dodged; where an answer was not direct, the entry states what was asked and not answered |
+| wording | 43 | The change in management's wording on one topic from one event to the next (stronger, weaker, new, dropped or unchanged), with both quotes |
 
-Samples: [call_statements.csv](samples/call_statements.csv) (with the check results of each row),
-[call_qa.csv](samples/call_qa.csv) (one answered directly, one in part, one dodged; the quotes are not published) and
+Samples: [call_statements.csv](samples/call_statements.csv) (with the verification results for each entry),
+[call_qa.csv](samples/call_qa.csv) (one direct, one partial and one dodged answer; quotes withheld) and
 [call_wording.csv](samples/call_wording.csv).
 
-## How they were checked
+## Verification
 
-1. **Every quote found again by script:** each sits exactly on its cited line, and each number is inside its quote.
-2. **Every speaker label checked by script:** for each cited line of an official transcript, the label above it matches
-   the row's speaker, analyst or answerer. All 642 matched.
-3. **Every question covered.** Every analyst question on the four calls has a row. The 11 analyst turns without one are
-   thank-yous, one sound check and one follow-up folded into its question.
-4. **A second reading of every row.** Checker agents read all 844 rows, each next to the lines it rests on. They raised
-   17 flags. Each flag was checked against the source before it counted, and 13 rows were fixed. None of the fixes
-   changed a number; all were overstatements:
-   - "a big part of that is ZIA and ZPA" had been written as "mostly ZIA/ZPA";
-   - a hedge was dropped: Z-Flex "doesn't have necessarily a different impact" on ARR became "does not change" it;
-   - "not seats" was the reader's own inference, not something said;
-   - three restructuring rows were given a quarter that nobody gave;
-   - one value kept our transcript's "200,000 locations", although its own sentence flagged that the deck says 200+.
+1. **Citations (script).** Every quote appears exactly on its cited line, and every figure appears within its quote.
+2. **Speaker attribution (script).** For each cited line of an official transcript, the label above it matches the
+   entry's speaker, analyst or respondent: 642 of 642.
+3. **Coverage of the Q&A.** Every analyst question on the four calls has an entry. The 11 analyst turns without one are
+   closing thanks, one sound check and one follow-up merged into its question.
+4. **Review agents.** Review agents re-read all 844 entries against the lines they rest on and raised 17 flags. Each
+   flag was verified against the source before it was accepted, and 13 entries were corrected. No correction changed a
+   figure; all concerned overstatement:
+   - "a big part of that is ZIA and ZPA" had been recorded as "mostly ZIA/ZPA";
+   - a qualifier was dropped: Z-Flex "doesn't have necessarily a different impact" on ARR became "does not change" it;
+   - "not seats" was the reader's inference rather than a statement made on the call;
+   - three restructuring entries were assigned a quarter that management had not given;
+   - one value retained the in-house transcript's "200,000 locations", although the entry's own statement noted that
+     the presentation says 200+.
 
-   Every fix keeps its old value in [corrections.csv](../4_checks/corrections.csv). The checker agents were wrong too,
-   on 2 of their 17 flags. One read the CFO restating a full-year figure as a new, Q4-only figure. The other blamed the
-   reader for an executive's own arithmetic.
-5. **By hand.** Nine of the 30 hand-checked numbers come from these tables. Each was checked against the transcript's
-   page, the deck's page or the recording's timestamp, and all nine were right.
+   Every correction keeps its original value in [corrections.csv](../4_checks/corrections.csv). Two of the 17 flags
+   were themselves wrong: one read the CFO's restatement of a full-year figure as a new Q4-only figure, and the other
+   attributed an executive's own arithmetic to the reader.
+5. **Manual sample.** Nine of the 30 figures in the manual sample come from these tables. Each was checked against the
+   transcript page, the presentation page or the recording timestamp; all nine were correct.
 
-## What the transcripts got wrong
+## Errors in the transcripts and in management's figures
 
-**The official transcripts:**
-- the Q4 text labels an answer to a question put to the CEO as the CFO's;
-- it has "a legacy fiber-based SaaS platform" for what the deck calls a firewall-based SASE platform;
-- misheard words: "fiscal 2017" for fiscal 2027, "final vendors" for firewall vendors;
+**Official transcripts:**
+- the Q4 transcript attributes to the CFO an answer to a question put to the CEO;
+- it renders as "a legacy fiber-based SaaS platform" what the presentation calls a firewall-based SASE platform;
+- misheard words: "fiscal 2017" for fiscal 2027, and "final vendors" for firewall vendors;
 - one analyst's firm is listed as "Citibank Cameroon SA (Douala Branch)".
 
-**Our own transcripts:**
+**In-house transcripts:**
 - "$20 billion" for the $220B total market shown on the slide;
-- "over 200,000 locations" where the deck says 200+;
-- "$8 to $10 billion by fiscal." lost its year (the deck says FY31);
-- most people's names were garbled, and the company's own name came out five different ways, even with the names
+- "over 200,000 locations" where the presentation says 200+;
+- "$8 to $10 billion by fiscal." lost its year (the presentation says FY31);
+- most personal names were garbled, and the company's own name was rendered five different ways despite the names
   list.
 
-**Management's own numbers, between calls and slides:**
-- **A metric changed meaning without a bridge.** "AI Security ARR" passed $400M on the Q1 call, with a target of over
-  $0.5B by the end of FY26. The investor day put
-  "Security for AI" at about $70M under new categories, and nothing reconciles the two.
-- **Data security ARR** went from about $450M (Q1) to over $500M (Q3), then to $410M at the investor day, after one
+**Management's figures across calls and presentations:**
+- **A metric redefined without reconciliation.** "AI Security ARR" passed $400M on the Q1 call, with a target of over
+  $0.5B by the end of FY26. The investor day put "Security for AI" at about $70M under new categories, and nothing
+  reconciles the two.
+- **Data Security ARR** went from about $450M (Q1) to over $500M (Q3), then to $410M at the investor day, after one
   product moved to another category.
-- **The target market** was enterprises with "over two thousand user seats" on one call, and 1,500+ employees in the
-  deck. Its size went from 4,400 to 4,500, then to 4,600 enterprises.
-- **One customer story** has three sets of figures: "$5 million plus" of ARR on the Q4 call, "$5 million worth of ARR
-  expansion" at the investor day, and $3.1M to $8.0M on the deck's chart.
-- **The sales chief's arithmetic:** $15B of "white space" called "a 5x expansion potential" on $3.8B of ARR. $15B is
-  about 4x; the deck's 5x is the $19B total.
+- **The target market** was defined as enterprises with "over two thousand user seats" on one call and 1,500+ employees
+  in the presentation, and was sized at 4,400, then 4,500, then 4,600 enterprises.
+- **One customer example** carries three sets of figures: "$5 million plus" of ARR on the Q4 call, "$5 million worth of
+  ARR expansion" at the investor day, and $3.1M to $8.0M on the presentation's chart.
+- **The chief revenue officer's arithmetic:** $15B of "white space" was described as "a 5x expansion potential" on $3.8B
+  of ARR. $15B is about 4x; the presentation's 5x refers to the $19B total.
 
 ## Excerpt from calls.py
 
-The download step is not shown. This is the transcription step (`…` marks cuts): the names list goes in, the lock
-keeps the GPU to one job, and every segment comes out with its timestamp.
+The download step is not shown. The excerpt below is the transcription step (`…` marks omissions): the names list is
+supplied, the lock limits the GPU to one job, and each segment is written with its timestamp.
 
 ```python
 NAMES = {"ZS": "Zscaler, …, Red Canary, SPLX, Zero Trust Exchange, "
